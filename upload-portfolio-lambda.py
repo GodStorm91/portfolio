@@ -23,7 +23,7 @@ def lambda_handler(event, context):
                     location = artifact["location"]["s3Location"]
                     
         portfolio_bucket = s3.Bucket('portfolio.serverless4everyone.info')
-        build_bucket = s3.Bucket(location["bucketName"])
+        build_bucket = s3.Bucket(location['bucketName'])
         
         portfolio_zip = StringIO.StringIO()
         build_bucket.download_fileobj(location["objectKey"], portfolio_zip)
@@ -43,10 +43,7 @@ def lambda_handler(event, context):
         
         if job:
             codepipeline = boto3.client("codepipeline")
-            codepipeline.put_job_success_result(jobId=job["id"])
+            codepipeline.put_job_success_result(jobId = job["id"])
     except:
         topic.publish(Subject="Portfolio Deployment SNS", Message="The deployment failed")
-        if job:
-            codepipeline = boto3.client("codepipeline")
-            codepipeline.put-job-failure-result(jobId=job["id"])
     
