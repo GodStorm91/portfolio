@@ -9,6 +9,6 @@ artifacts:
     - index.html
     - favicon.ico
     - KhanhNguyen-Resume.pdf
-    - style/main.css
+    - styles/main.css
     - images/*
 
