@@ -18,7 +18,8 @@ const myExample = {
 	};
 
 describe('ExampleWorkModal component', () =>{
-	let component = shallow(<ExampleWorkModal example={myExample}/>);
+	let component = shallow(<ExampleWorkModal example={myExample} open={false}/>);
+	let openComponent = shallow(<ExampleWorkModal example={myExample} open={true}/>);
 
 	let anchors = component.find('a');
 
@@ -29,4 +30,10 @@ describe('ExampleWorkModal component', () =>{
 	it("Should contains link to our project", () => {
 		expect(anchors.prop('href')).toEqual(myExample.link);
 	})
+
+	it("Should have the modal class set correctly", () => {
+		expect(component.find('.background--skyBlue').hasClass("modal--closed")).toBe(true);
+		expect(openComponent.find('.background--skyBlue').hasClass("modal--open")).toBe(true);
+	})
+
 })
