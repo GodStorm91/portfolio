@@ -43,7 +43,6 @@ describe("ExampleWorkBubble component", () => {
 	it("Should call lthe open handler on click ", () => {
 		component.find(".section__exampleWrapper").simulate('click');
 		expect(mockOpenModalFn).toHaveBeenCalled();
-		throw "Some error occured";
 	})
 })
 
